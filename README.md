@@ -1,8 +1,10 @@
 # Example for AWS Lambda w/ Docker
 
-> Build a Continuous Integration and Continuous Deployment for AWS Lambda with Docker images using GitHub Actions. Together with Semantic Releases and Conventional Commits, you can focus on writing your code.
+> Build a **Continuous Integration** and **Continuous Deployment** setup for **AWS Lambda with Docker** images using **GitHub Actions**. Together with [Semantic Releases](https://semver.org/) and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), you can focus on writing your code.
 
 ## Workflows
+
+Everything runs with [GitHub Actions](https://github.com/features/actions).
 
 ### Semantic Releases
 
