@@ -16,6 +16,13 @@ jobs:
         id: version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
 
+      - uses: chrnorm/deployment-action@releases/v1
+        name: Create Deployment
+        id: deployment
+        with:
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN}}
+          environment: production
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -35,3 +42,11 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: make build
+
+      - name: Update Deployment (success)
+        if: success()
+        uses: chrnorm/deployment-status@releases/v1
+        with:
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          state: 'success'
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
