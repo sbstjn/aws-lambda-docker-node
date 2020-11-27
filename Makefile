@@ -23,12 +23,13 @@ outputs-%:
 		FORMAT=text \
 		$(MAKE) describe-infrastructure
 
+login: REPOSITORY_HOST=`make outputs-RepositoryHost`
+login:
+	@ aws ecr get-login-password --region sa-east-1 | docker login -u "AWS" --password-stdin "$(REPOSITORY_HOST)"
+
 build: REPOSITORY_NAME=`make outputs-RepositoryName`
 build: REPOSITORY_HOST=`make outputs-RepositoryHost`
 build:
-	echo $(REPOSITORY_NAME)
-	echo $(REPOSITORY_HOST)
-	@ aws ecr get-login-password --region sa-east-1 | docker login -u "AWS" --password-stdin $(REPOSITORY_HOST)
 	@ docker build . -t $(REPOSITORY_NAME):$(VERSION)
 	@ docker tag $(REPOSITORY_NAME):$(VERSION) $(REPOSITORY_HOST)/$(REPOSITORY_NAME):$(VERSION)
 	@ docker push $(REPOSITORY_HOST)/$(REPOSITORY_NAME):$(VERSION)
