@@ -9,4 +9,4 @@ jobs:
 
     steps:
       - name: Example
-        run: echo "Hi"
+        run: echo "Ref $GITHUB_REF"
