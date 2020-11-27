@@ -16,13 +16,10 @@ jobs:
       - name: Update AWS Lambda
         run: echo "Use tag ${{ steps.version.outputs.VERSION }}"
 
-      - name: Show environment
-        run: env
-
-      # - name: Update Deployment (success)
-      #   if: success()
-      #   uses: chrnorm/deployment-status@releases/v1
-      #   with:
-      #     token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
-      #     state: 'success'
-      #     deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+      - name: Update Deployment (success)
+        if: success()
+        uses: chrnorm/deployment-status@releases/v1
+        with:
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          state: 'success'
+          deployment_id: ${{ github.event.deployment.id }}
