@@ -6,9 +6,9 @@
 
 Everything runs with [GitHub Actions](https://github.com/features/actions).
 
-### Semantic Releases
+### Semantic Version
 
-Every push on `main` branch will trigger the **GitHub Action** in `semantic-release.yml` and create a new `git tag` and [GitHub Release](/sbstjn/aws-lambda-docker-node/releases) based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+Every push on `main` branch will trigger the **GitHub Action** in `version.yml` to create a new `git tag` and [GitHub Release](/sbstjn/aws-lambda-docker-node/releases) based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ### Deployment
 
@@ -16,7 +16,7 @@ Every new [GitHub Release](/sbstjn/aws-lambda-docker-node/releases) will trigger
 
 ### Release
 
-After the tagged image is pushed to [Amazon Elastic Container Registry](https://aws.amazon.com/ecr/), the AWS Lambda function is updated.
+Using [GitHub Deployments](/sbstjn/aws-lambda-docker-node/deployments), the AWS Lambda function is updated using **GitHub Action** in `release.yml` after a new image is pushed to the [Amazon Elastic Container Registry](https://aws.amazon.com/ecr/).
 
 ## Infrastructure
 
