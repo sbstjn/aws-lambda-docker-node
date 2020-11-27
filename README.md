@@ -1,6 +1,6 @@
 # Example CI/CD for AWS Lambda w/ Docker
 
-> Build a **Continuous Integration** and **Continuous Deployment** setup for **AWS Lambda** functions with **Docker** images using **GitHub Actions**. Together with [Semantic Releases](https://semver.org/) and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), you can focus on writing your code. Automation takes care everything else.
+> A **Continuous Integration** and **Continuous Deployment** setup for **AWS Lambda** functions with **Docker** images using **GitHub Actions**. Together with [Semantic Releases](https://semver.org/) and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), you can focus on writing your code. Automation takes care everything else.
 
 ## Configuration
 
