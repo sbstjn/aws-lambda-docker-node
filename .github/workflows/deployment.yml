@@ -43,3 +43,7 @@ jobs:
           token: ${{ secrets.CUSTOM_GITHUB_TOKEN}}
           environment: production
           ref: refs/tags/${{ steps.version.outputs.VERSION }}
+
+      - name: Show
+        id: version
+        run: echo "Deployment ID ${{ steps.deployment.outputs.deployment_id }}"
