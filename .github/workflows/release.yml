@@ -7,6 +7,11 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
+
     steps:
-      - name: Example
-        run: echo "Ref $GITHUB_REF"
+      - name: Parse the current version
+        id: version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+
+      - name: Update AWS Lambda
+        run: echo "Use tag ${{ steps.version.outputs.VERSION }}"
