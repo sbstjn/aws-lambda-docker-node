@@ -2,6 +2,15 @@
 
 > Build a **Continuous Integration** and **Continuous Deployment** setup for **AWS Lambda** functions with **Docker** images using **GitHub Actions**. Together with [Semantic Releases](https://semver.org/) and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), you can focus on writing your code. Automation takes care everything else.
 
+## Configuration
+
+You need to configure these environment variables as GitHub secrets:
+
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_REGION`
+- `CUSTOM_GITHUB_TOKEN`
+
 ## Workflows
 
 Everything runs with [GitHub Actions](https://github.com/features/actions).
@@ -26,14 +35,15 @@ Using [GitHub Deployments](https://github.com/sbstjn/aws-lambda-docker-node/depl
 
 ## Infrastructure
 
-First, create a new repository using the [Amazon Elastic Container Registry](https://aws.amazon.com/ecr/). The **CloudFormation Template** in [`infrastructure.yml`](aws/infrastructure.yml) includes all needed resources.
+First, create a new repository using the [Amazon Elastic Container Registry](https://aws.amazon.com/ecr/). The CloudFormation template in [`infrastructure.yml`](aws/infrastructure.yml) includes all needed resources.
 
 ```bash
 # Configure Amazon Elastic Container Registry
 
-$ > make deploy-infrastructure
+$ > AWS_REGION=eu-central-1 \
+    make deploy-infrastructure
 ```
 
 ## Notes
 
-Per default, GitHub configures an access token for every action run. When using the default token, an action cannot trigger any other actions. Therefor, the custom GitHub Token is needed for using the GitHub API.
+Per default, GitHub configures an access token for every action run. When using the default token, an action cannot trigger any other actions. Therefore, a custom GitHub Token is needed for using the GitHub API.

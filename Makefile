@@ -1,5 +1,5 @@
 NAME = aws-lambda-docker-node
-AWS_REGION = sa-east-1
+AWS_REGION ?= eu-central-1
 VERSION ?= dev
 
 deploy-infrastructure:
