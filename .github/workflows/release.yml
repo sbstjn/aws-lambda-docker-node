@@ -1,0 +1,12 @@
+name: Release
+
+on:
+  deployment_status
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Example
+        run: echo "Hi"
