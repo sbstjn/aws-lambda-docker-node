@@ -13,7 +13,11 @@ You need to configure these environment variables as GitHub secrets:
 
 ## Workflows
 
-Everything runs with [GitHub Actions](https://github.com/features/actions).
+Everything runs with [GitHub Actions](https://github.com/features/actions); a full cycle includes three _stages_:
+
+- Create n new [Semantic Release](https://github.com/marketplace/actions/action-for-semantic-release)
+- Build and public an image for every [GitHub Release](https://github.com/sbstjn/aws-lambda-docker-node/releases)
+- Update service to use new image
 
 ### Semantic Version
 
