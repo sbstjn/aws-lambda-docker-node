@@ -22,7 +22,7 @@ jobs:
         with:
           token: ${{ secrets.CUSTOM_GITHUB_TOKEN}}
           environment: production
-          ref: ${{ steps.version.outputs.VERSION }}
+          ref: refs/tags/${{ steps.version.outputs.VERSION }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
