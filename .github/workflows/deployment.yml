@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Parse the current version
+      - name: Set $VERSION variable
         id: version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
 
@@ -24,25 +24,21 @@ jobs:
           aws-region: sa-east-1
 
       - name: Login to Amazon ECR
-        id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
         with:
           registries: 420048798477,628053151772
 
-      - name: Deploy Docker image
+      - name: Publish to Container Registry
         env:
           VERSION: ${{ steps.version.outputs.VERSION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: make build
+        run: make publish
 
       - uses: chrnorm/deployment-action@releases/v1
-        name: Create Deployment
+        name: Trigger Deployment
         id: deployment
         with:
           token: ${{ secrets.CUSTOM_GITHUB_TOKEN}}
           environment: production
           ref: refs/tags/${{ steps.version.outputs.VERSION }}
-
-      - name: Show
-        run: echo "Deployment ID ${{ steps.deployment.outputs.deployment_id }}"

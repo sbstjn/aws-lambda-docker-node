@@ -9,7 +9,7 @@ jobs:
 
 
     steps:
-      - name: Parse the current version
+      - name: Set $VERSION variable
         id: version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
 
@@ -22,4 +22,12 @@ jobs:
         with:
           token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
           state: 'success'
+          deployment_id: ${{ github.event.deployment.id }}
+
+      - name: Update Deployment (failure)
+        if: failure()
+        uses: chrnorm/deployment-status@releases/v1
+        with:
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          state: 'failure'
           deployment_id: ${{ github.event.deployment.id }}
