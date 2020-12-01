@@ -12,3 +12,4 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       ImageUri: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${ImageName}:${ImageTag}
+      PackageType: Image
