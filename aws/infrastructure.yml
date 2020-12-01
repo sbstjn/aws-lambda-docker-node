@@ -9,6 +9,7 @@ Resources:
     Type: AWS::ECR::Repository
     Properties:
       RepositoryName: !Ref Name
+      ImageTagMutability: IMMUTABLE
 
 Outputs:
   RepositoryName:
