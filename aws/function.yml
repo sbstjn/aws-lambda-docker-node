@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  Image:
+    Type: String
+
+Resources:
+  Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: python3.6
+      InlineCode: |
+        def handler(event, context):
+          print("Hello, world!")
