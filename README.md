@@ -2,7 +2,7 @@
 
 > A **Continuous Integration** and **Continuous Deployment** setup for **AWS Lambda** functions with **Docker** images using **GitHub Actions**. Together with [Semantic Releases](https://semver.org/) and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), you can focus on writing your code. Automation takes care everything else.
 
-**Warning:** _There is no CloudFormation support for Container Image Support in AWS Lambda yet. The [release.yml](https://github.com/sbstjn/aws-lambda-docker-node/blob/main/.github/workflows/release.yml#L16) configuration does not update any AWS Lambda function so far. The missing piece is an update of a CloudFormation Stack.
+**Warning:** _There is no CloudFormation support for Container Image Support in AWS Lambda yet. The [release.yml](https://github.com/sbstjn/aws-lambda-docker-node/blob/main/.github/workflows/release.yml#L16) configuration does not update any AWS Lambda function so far. The missing piece is an update of a CloudFormation Stack._
 
 ## Configuration
 
