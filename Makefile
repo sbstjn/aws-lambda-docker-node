@@ -25,7 +25,7 @@ outputs-%:
 
 login: REPOSITORY_HOST=`$(MAKE) -s outputs-RepositoryHost`
 login:
-	@ aws ecr get-login-password --region sa-east-1 | docker login -u "AWS" --password-stdin "$(REPOSITORY_HOST)"
+	@ aws ecr get-login-password --region $(AWS_REGION) | docker login -u "AWS" --password-stdin "$(REPOSITORY_HOST)"
 
 publish: REPOSITORY_NAME=`$(MAKE) -s outputs-RepositoryName`
 publish: REPOSITORY_HOST=`$(MAKE) -s outputs-RepositoryHost`
