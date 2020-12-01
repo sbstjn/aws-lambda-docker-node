@@ -1,7 +1,9 @@
 AWSTemplateFormatVersion: 2010-09-09
 
 Parameters:
-  Image:
+  ImageName:
+    Type: String
+  ImageTag:
     Type: String
 
 Resources:
@@ -9,7 +11,4 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
-      Runtime: python3.6
-      InlineCode: |
-        def handler(event, context):
-          print("Hello, world!")
+      ImageUri: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${ImageName}:${ImageTag}
