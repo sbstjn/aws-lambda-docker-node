@@ -4,6 +4,8 @@
 
 **Warning:** _There is no CloudFormation support for Container Image Support in AWS Lambda yet. The [release.yml](https://github.com/sbstjn/aws-lambda-docker-node/blob/main/.github/workflows/release.yml#L16) configuration does not update any AWS Lambda function so far. The missing piece is an update of a CloudFormation Stack._
 
+_The docs for [AWS::Serverless::Function](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html) are updated, the backend still behaves strange. The CloudFormation template in [`release.yml`](https://github.com/sbstjn/aws-lambda-docker-node/blob/main/aws/function.yml#L11) might need some adjustments._
+
 ## Configuration
 
 You need to configure these environment variables as GitHub secrets:
