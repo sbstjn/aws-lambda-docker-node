@@ -13,7 +13,7 @@ jobs:
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
 
       - name: Update AWS Lambda
-        run: echo "Use tag ${{ steps.version.outputs.VERSION }}"
+        run: echo "Use tag ${{ steps.version.outputs.VERSION }} from ECR for AWS Lambda"
 
       - name: Update Deployment (success)
         if: success()
