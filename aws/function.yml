@@ -11,5 +11,4 @@ Resources:
   Function:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: index.handler
       ImageUri: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${ImageName}:${ImageTag}
