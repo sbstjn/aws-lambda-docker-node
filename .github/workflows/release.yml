@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
       - name: Set $VERSION variable
         id: version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
@@ -27,7 +30,7 @@ jobs:
         with:
           name: example-stack
           template: aws/function.yml
-          parameter-overrides: "ImageName=aws-lambda-docker-node ImageTag=v1.17.0"
+          parameter-overrides: "ImageName=aws-lambda-docker-node ImageTag=${{ steps.version.outputs.VERSION }}"
 
       - name: Update Deployment (success)
         if: success()
