@@ -31,6 +31,7 @@ jobs:
           name: example-stack
           template: aws/function.yml
           parameter-overrides: "ImageName=aws-lambda-docker-node,ImageTag=${{ steps.version.outputs.VERSION }}"
+          capabilities: CAPABILITY_AUTO_EXPAND, CAPABILITY_IAM
 
       - name: Update Deployment (success)
         if: success()
