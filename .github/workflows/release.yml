@@ -30,7 +30,7 @@ jobs:
         with:
           name: example-stack
           template: aws/function.yml
-          parameter-overrides: "ImageName=aws-lambda-docker-node ImageTag=v1.17.0"
+          parameter-overrides: "ImageName=aws-lambda-docker-node,ImageTag=${{ steps.version.outputs.VERSION }}"
 
       - name: Update Deployment (success)
         if: success()
