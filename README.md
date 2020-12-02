@@ -19,6 +19,8 @@ Everything runs with [GitHub Actions](https://github.com/features/actions); a fu
 - Build and public an image for every [GitHub Release](https://github.com/sbstjn/aws-lambda-docker-node/releases)
 - Update service to use new image
 
+[Read more about Event-Driven Delivery](https://sbstjn.com/blog/event-driven-delivery/).
+
 ### Semantic Version
 
 > on: push: branches: ["main"]
